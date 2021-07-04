@@ -1,0 +1,13 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <listeners>
+        <listener class-name="com.testchn.springtest.common.util.MyAnnotationListener"></listener>
+    </listeners>
+    <test name="test" >
+        <packages>
+            <package name="com.testchn.springtest.cases" />
+        </packages>
+    </test>
+</suite>
