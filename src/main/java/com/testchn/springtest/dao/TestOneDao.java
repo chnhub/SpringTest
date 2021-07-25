@@ -4,6 +4,6 @@ import com.testchn.springtest.entity.UserEntity;
 
 import java.util.List;
 
-public interface UserDao {
+public interface TestOneDao {
     List<UserEntity> select();
 }

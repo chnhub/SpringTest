@@ -4,6 +4,6 @@
 <mapper namespace="com.testchn.springtest.dao">
     <select id="select" resultType="com.testchn.springtest.entity.UserEntity">
         select id, username, age
-            from user_info;
+            from t_user;
     </select>
 </mapper>

@@ -1,7 +1,7 @@
 package com.testchn.springtest;
 
 
-import com.testchn.springtest.dao.UserDao;
+import com.testchn.springtest.dao.TestOneDao;
 import com.testchn.springtest.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,7 +14,7 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:test.xml"})
 public class TestTwo extends AbstractTestNGSpringContextTests {
     @Autowired
-    private UserDao dao;
+    private TestOneDao dao;
     @Test
     public void case_1(){
 

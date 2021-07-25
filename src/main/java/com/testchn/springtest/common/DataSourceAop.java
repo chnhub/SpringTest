@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 
 @Aspect//来定义一个切面
-@Component
+//@Component
 @Log4j2
 public class DataSourceAop {
     //定义切入点
