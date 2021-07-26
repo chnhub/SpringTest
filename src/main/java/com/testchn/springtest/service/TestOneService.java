@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 public interface TestOneService {
     public List<UserEntity> getList();
+
+    public int insert(UserEntity user);
 }

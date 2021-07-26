@@ -13,9 +13,14 @@ public class TestOneServiceImpl implements TestOneService {
     private TestOneMapper testOneMapper;
     @Override
     public List<UserEntity> getList() {
-        UserEntity user = testOneMapper.selectById(1L);
+//        UserEntity user = testOneMapper.selectById(1L);
         List<UserEntity> userList = testOneMapper.selectList(null);
 
         return userList;
+    }
+
+    @Override
+    public int insert(UserEntity user) {
+        return testOneMapper.insert(user);
     }
 }
