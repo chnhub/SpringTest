@@ -1,4 +1,4 @@
-package com.testchn.springtest.entity;
+package com.testchn.springtest.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

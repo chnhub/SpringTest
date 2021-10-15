@@ -104,6 +104,12 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>2.5.3</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -114,6 +120,36 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!--    统计代码覆盖率        -->
+<!--            <plugin>-->
+<!--                <groupId>org.jacoco</groupId>-->
+<!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                <version>0.8.1</version>-->
+<!--                <configuration>-->
+<!--                    <includes>-->
+<!--                        &lt;!&ndash; 限定只统计部分类的覆盖率 &ndash;&gt;-->
+<!--&lt;!&ndash;                        <include>com/testchn/springtest/*Controller</include>&ndash;&gt;-->
+<!--                    </includes>-->
+<!--                    <destFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</destFile>-->
+<!--                    <dataFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</dataFile>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>jacoco-initialize</id>-->
+<!--                        <goals>-->
+<!--                            <goal>prepare-agent</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>jacoco-site</id>-->
+<!--                        <phase>test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>report</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
         </plugins>
     </build>
 

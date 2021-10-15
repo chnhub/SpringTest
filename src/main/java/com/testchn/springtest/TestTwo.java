@@ -2,7 +2,7 @@ package com.testchn.springtest;
 
 
 import com.testchn.springtest.dao.TestOneDao;
-import com.testchn.springtest.entity.UserEntity;
+import com.testchn.springtest.model.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;

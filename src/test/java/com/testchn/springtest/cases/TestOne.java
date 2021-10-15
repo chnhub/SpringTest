@@ -1,36 +1,38 @@
 package com.testchn.springtest.cases;
 
-import com.testchn.springtest.common.util.DataSource;
-import com.testchn.springtest.common.util.DatabaseUtil;
-import com.testchn.springtest.entity.UserEntity;
-import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.session.SqlSession;
+import com.testchn.springtest.controller.TestOneController;
+import com.testchn.springtest.controller.UserInfoController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.testng.Assert;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-//@SpringBootTest
-@Log4j2
-public class TestOne {
-//    private static Logger logger= LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-
-    @DataSource(value = "value_p", datasource = "datasource")
+@SpringBootTest
+public class TestOne extends AbstractTestNGSpringContextTests {
+    @Autowired
+    UserInfoController userInfoController;
+    @Autowired
+    TestOneController testOneController;
     @Test
-    public void caseOne() throws IOException {
-        SqlSession sqlSession =  DatabaseUtil.getSqlSession();
-        List<UserEntity> list1 = sqlSession.selectList("select");
-//        logger.info("test:" + list1);
-        log.info("111111111test:" + list1);
-        System.out.println("-----------------testset");
-        Assert.assertEquals(1,1, "测试用例1");
-        this.caseTwo();
+    void testSelectUserList(){
+        userInfoController.list();
     }
-    @DataSource(value = "value_p", datasource = "datasource")
-    public void caseTwo(){
-        System.out.println("-----------------22222");
+    @Test
+    void testTestIf(){
 
+        for (int i = 0; i < 10; i++) {
+            testOneController.testIf(String.valueOf(i+1));
+        }
+
+    }
+    @Test
+    void testTestIfAndFor(){
+        testOneController.testIfAndFor("1");
+        testOneController.testIfAndFor("2");
+    }
+
+    @Test
+    void testSwitch(){
+        // 测试switch的分支
+        testOneController.testIfAndSwitch("4");
     }
 }

@@ -1,63 +1,90 @@
 package com.testchn.springtest.controller;
 
-
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.testchn.springtest.common.vo.CommonPageRelsult;
-import com.testchn.springtest.common.vo.CommonResult;
-import com.testchn.springtest.common.vo.UserInfoVo;
-import com.testchn.springtest.dao.mapper.UserSessionMapper;
-import com.testchn.springtest.entity.UserEntity;
-import com.testchn.springtest.service.TestOneService;
-import com.testchn.springtest.service.impl.TestOneServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.testchn.springtest.model.param.UserConfigParam;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/jacoco")
 public class TestOneController {
-    @Autowired
-    private TestOneService userService;
-//    @GetMapping("list")
+    @GetMapping("if")
+    public String testIf(@RequestParam(name = "param", defaultValue = "") String param){
+        String retrunStr = "";
+        String desStr = "_进入if判断param==";
+        if ("1".equals(param)){
+            retrunStr = param + desStr + param;
+        }else if("2".equals(param)){
+            retrunStr = param + desStr + param;
+        }
+        else if("3".equals(param)){
+            retrunStr = param + desStr + param;
+        }
+        else if("4".equals(param)){
+            retrunStr = param + desStr + param;
 
-    /***
-     * 查询用户相关数据
-     * @return
-     */
-    @GetMapping
-    public CommonResult<CommonPageRelsult> list(){
+        }else{
+            retrunStr = param + "_进入判断else";
+        }
 
-        //List<UserEntity> list = userService.getList();
-//        return CommonResult.result();
-//        CommonPageRelsult t = new CommonPageRelsult();
-//        List l = new ArrayList();
-//        l.add("hah");
-//        l.add("22");
-//        t.setRows(list);
-        PageHelper.startPage(1,5);
-        List<UserEntity> list = userService.getList();
-        PageInfo<UserEntity> pageInfo = new PageInfo<UserEntity>(list);
-        return CommonResult.success("test",  CommonPageRelsult.toPage(pageInfo));
+        return "输入的param为："+ param + ", 共：8个分支，" + retrunStr;
     }
-    /***
-     * 插入用户数据
-     */
-    @PostMapping
-    public CommonResult<?> insertUser(@RequestBody UserEntity user){
-        return CommonResult.success("用户数据插入",userService.insert(user));
+    @GetMapping("ifandfor")
+    public String testIfAndFor(@RequestParam(name = "param", defaultValue = "") String param){
+        String retrunStr = "";
+        if ("1".equals(param)){
+            retrunStr = param + "_进入if判断param=="+param;
+        }else{
+            retrunStr = param + "_进入if判断else";
+            for (int i = 0; i < 10; i++) {
+                retrunStr += i;
+            }
+        }
+
+        return "输入的param为："+ param + " 共：4个判断分支";
     }
-
-    /***
-     * 插入用户需要存储的信息
-     * @param userInfo
-     * @return
-     */
-    @PostMapping("insert")
-    public CommonResult<?> insertUserInfo(@RequestBody UserInfoVo userInfo){
-
-        return CommonResult.success("用户相关信息插入",userService.insertUserInfo(userInfo));
+    @GetMapping("twobranches")
+    public String testTwoBranches(@RequestParam(name = "param", defaultValue = "") String param){
+        String retrunStr = "";
+        if ("1".equals(param)){
+            retrunStr = param + "_进入if判断param=="+param;
+        }else if("2".equals(param)){
+            retrunStr = param + "_进入if判断param=="+param;
+        }else{
+            System.out.println("进入else");
+        }
+        switch (param){
+            case "3":
+                System.out.println(param);
+            case "4":
+                System.out.println(param);
+            case "5":
+                System.out.println(param);
+        }
+        return "输入的param为："+ param + " 共：5个判断分支";
+    }
+    @GetMapping("ifandswitch")
+    public String testIfAndSwitch(@RequestParam(name = "param", defaultValue = "") String param){
+        String retrunStr = "";
+        if ("1".equals(param)){
+            retrunStr = param + "_进入if判断param=="+param;
+        }else if("2".equals(param)){
+            retrunStr = param + "_进入if判断param=="+param;
+        }else{
+            System.out.println("进入else");
+        }
+        switch (param){
+            case "3":
+                System.out.println("进入case3:" + param);
+                break;
+            case "4":
+                System.out.println("进入case4:" + param);
+                break;
+            case "5":
+                System.out.println("进入case5:" + param);
+                break;
+            default:
+                System.out.println("进入case6:" + param);
+        }
+        return "输入的param为："+ param + " 共：5个判断分支";
     }
 }

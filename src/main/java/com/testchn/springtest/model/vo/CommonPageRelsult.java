@@ -1,4 +1,4 @@
-package com.testchn.springtest.common.vo;
+package com.testchn.springtest.model.vo;
 
 import lombok.Data;
 import lombok.ToString;
