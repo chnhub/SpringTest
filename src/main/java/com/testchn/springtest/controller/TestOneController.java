@@ -35,9 +35,10 @@ public class TestOneController {
             retrunStr = param + "_进入if判断param=="+param;
         }else{
             retrunStr = param + "_进入if判断else";
-            for (int i = 0; i < 10; i++) {
-                retrunStr += i;
-            }
+
+        }
+        for (int i = 0; i < 10; i++) {
+            retrunStr += i;
         }
 
         return "输入的param为："+ param + " 共：4个判断分支";
