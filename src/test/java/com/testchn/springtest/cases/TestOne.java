@@ -32,7 +32,7 @@ public class TestOne extends AbstractTestNGSpringContextTests {
 
     @Test
     void testSwitch(){
-        // 测试switch的分支
+        // 测试switch的分支 1
         testOneController.testIfAndSwitch("4");
     }
 }
