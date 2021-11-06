@@ -37,11 +37,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>5.1.29</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.mybatis</groupId>-->
 <!--            <artifactId>mybatis</artifactId>-->
@@ -111,16 +111,63 @@
             <scope>test</scope>
         </dependency>
 
-    </dependencies>
 
+<!--        evosuite-->
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>4.12</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-standalone-runtime</artifactId>
+            <version>1.0.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <artifactId>junit</artifactId>
+            <groupId>junit</groupId>
+            <scope>test</scope>
+        </dependency>
+
+<!--        -->
+        <!-- JAXB -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>javax.xml.bind</groupId>-->
+<!--            <artifactId>jaxb-api</artifactId>-->
+<!--            <version>2.3.1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <!--        evosuite-->
+
+
+    </dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>EvoSuite</id>
+            <name>EvoSuite Repository</name>
+            <url>http://www.evosuite.org/m2</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--    统计代码覆盖率        -->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--                统计代码覆盖率-->
 <!--            <plugin>-->
 <!--                <groupId>org.jacoco</groupId>-->
 <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
@@ -150,7 +197,33 @@
 <!--                </executions>-->
 <!--            </plugin>-->
 
-        </plugins>
+
+<!--        </plugins>-->
+        <finalName>EvotestDemo</finalName>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <groupId>org.evosuite.plugins</groupId>
+                    <artifactId>evosuite-maven-plugin</artifactId>
+                    <version>1.0.6</version>
+                </plugin>
+
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                    <version>2.9</version>-->
+<!--                    <configuration>-->
+<!--                        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--                        <argLine>${surefireArgLine}</argLine>-->
+<!--                        <skipTests>false</skipTests>-->
+<!--                        <includes>-->
+<!--                            <include>/cases/Test*.java</include>-->
+<!--                        </includes>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

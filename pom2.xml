@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.testchn</groupId>
+    <artifactId>evosuite_demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>evosuite_demo</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--        -->
+        <!-- JAXB -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>javax.xml.bind</groupId>-->
+        <!--            <artifactId>jaxb-api</artifactId>-->
+        <!--            <version>2.3.1</version>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--        evosuite-->
+
+        <dependency>
+            <groupId>org.evosuite</groupId>
+            <artifactId>evosuite-standalone-runtime</artifactId>
+            <version>1.0.6</version>
+            <!--            <version>1.2.1-SNAPSHOT</version>-->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>EvoSuite</id>
+            <name>EvoSuite Repository</name>
+            <url>http://www.evosuite.org/m2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--            </plugin>-->
+    <!--                统计代码覆盖率-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.jacoco</groupId>-->
+    <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+    <!--                <version>0.8.1</version>-->
+    <!--                <configuration>-->
+    <!--                    <includes>-->
+    <!--                        &lt;!&ndash; 限定只统计部分类的覆盖率 &ndash;&gt;-->
+    <!--&lt;!&ndash;                        <include>com/testchn/springtest/*Controller</include>&ndash;&gt;-->
+    <!--                    </includes>-->
+    <!--                    <destFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</destFile>-->
+    <!--                    <dataFile>${project.build.directory}/coverage-reports/jacoco-unit.exec</dataFile>-->
+    <!--                </configuration>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>jacoco-initialize</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>prepare-agent</goal>-->
+    <!--                        </goals>-->
+    <!--                    </execution>-->
+    <!--                    <execution>-->
+    <!--                        <id>jacoco-site</id>-->
+    <!--                        <phase>test</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>report</goal>-->
+    <!--                        </goals>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+
+
+    <!--        </plugins>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.1</version>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <argLine>${surefireArgLine}</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.evosuite.plugins</groupId>
+                <artifactId>evosuite-maven-plugin</artifactId>
+                <version>1.0.6</version>
+                <!--                        <configuration>-->
+                <!--                            <extraArgs>-Duse_separate_classloader=false</extraArgs>-->
+                <!--                        </configuration>-->
+
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

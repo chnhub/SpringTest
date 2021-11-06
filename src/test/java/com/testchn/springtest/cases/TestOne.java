@@ -1,23 +1,28 @@
 package com.testchn.springtest.cases;
 
+import com.testchn.springtest.SpringTestApplication;
 import com.testchn.springtest.controller.TestOneController;
 import com.testchn.springtest.controller.UserInfoController;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
-@SpringBootTest
-public class TestOne extends AbstractTestNGSpringContextTests {
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SpringTestApplication.class)
+public class TestOne {
     @Autowired
     UserInfoController userInfoController;
     @Autowired
     TestOneController testOneController;
     @Test
-    void testSelectUserList(){
+    public void testSelectUserList(){
         userInfoController.list();
     }
     @Test
-    void testTestIf(){
+    public void testTestIf(){
 
         for (int i = 0; i < 10; i++) {
             testOneController.testIf(String.valueOf(i+1));
@@ -25,13 +30,13 @@ public class TestOne extends AbstractTestNGSpringContextTests {
 
     }
     @Test
-    void testTestIfAndFor(){
+    public void testTestIfAndFor(){
         testOneController.testIfAndFor("1");
         testOneController.testIfAndFor("2");
     }
 
     @Test
-    void testSwitch(){
+    public void testSwitch(){
         // 测试switch的分支 1
         testOneController.testIfAndSwitch("4");
     }

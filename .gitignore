@@ -14,12 +14,14 @@ dataReport/*.xlsx
 .settings
 .springBeans
 .sts4-cache
+.evosuite
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans ###
 /nbproject/private/
